@@ -3,6 +3,7 @@
 #' @param data Data from trial
 #' @param data_pre Data, pre-trial
 #' @param data_post Data, post-trial
+#' @param method Which method is used to normalise the data
 #'
 #' @return Normalised data
 #' @export

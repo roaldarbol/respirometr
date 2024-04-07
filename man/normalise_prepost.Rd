@@ -12,6 +12,8 @@ normalise_prepost(data, data_pre, data_post, method = "means_linear")
 \item{data_pre}{Data, pre-trial}
 
 \item{data_post}{Data, post-trial}
+
+\item{method}{Which method is used to normalise the data}
 }
 \value{
 Normalised data
