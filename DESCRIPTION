@@ -10,3 +10,4 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: http://www.roald-arboel.com/respirometr/
+RoxygenNote: 7.3.1
