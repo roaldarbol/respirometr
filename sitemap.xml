@@ -16,9 +16,12 @@
     <loc>http://www.roald-arboel.com/respirometr/index.html</loc>
   </url>
   <url>
-    <loc>http://www.roald-arboel.com/respirometr/reference/hello.html</loc>
+    <loc>http://www.roald-arboel.com/respirometr/reference/index.html</loc>
   </url>
   <url>
-    <loc>http://www.roald-arboel.com/respirometr/reference/index.html</loc>
+    <loc>http://www.roald-arboel.com/respirometr/reference/normalise_prepost.html</loc>
+  </url>
+  <url>
+    <loc>http://www.roald-arboel.com/respirometr/reference/read_licor.html</loc>
   </url>
 </urlset>
