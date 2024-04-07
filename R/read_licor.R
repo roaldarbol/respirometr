@@ -1,14 +1,14 @@
 #' Read Licor data
 #'
-#' @param filepath
-#' @param model
+#' @param filepath Path to file
+#' @param model LiCor model
 #'
 #' @importFrom janitor make_clean_names
 #' @importFrom readr read_tsv
 #' @importFrom purrr map
 #' @importFrom dplyr mutate_all
 #'
-#' @return
+#' @return Tidy LiCor data
 #' @export
 #'
 read_licor <- function(filepath, model = "LI7000") {

@@ -7,7 +7,14 @@
 normalise_prepost(data, data_pre, data_post, method = "means_linear")
 }
 \arguments{
-\item{data_post}{}
+\item{data}{Data from trial}
+
+\item{data_pre}{Data, pre-trial}
+
+\item{data_post}{Data, post-trial}
+}
+\value{
+Normalised data
 }
 \description{
 Normalise Breathing Traces

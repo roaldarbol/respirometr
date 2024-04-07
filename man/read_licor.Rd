@@ -7,7 +7,12 @@
 read_licor(filepath, model = "LI7000")
 }
 \arguments{
-\item{model}{}
+\item{filepath}{Path to file}
+
+\item{model}{LiCor model}
+}
+\value{
+Tidy LiCor data
 }
 \description{
 Read Licor data
