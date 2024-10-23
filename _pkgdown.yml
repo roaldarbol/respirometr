@@ -1,4 +1,43 @@
 url: http://www.roald-arboel.com/respirometr/
+
+home:
+  title: An R toolbox for analysing respirometry data
+
+authors:
+  Mikkel Roald-Arbøl:
+    href: https://roald-arboel.com
+
 template:
+  light-switch: true
   bootstrap: 5
+
+reference:
+- title: "Read"
+  desc: These functions are the links between R and your data.
+  contents:
+  - read_licor
+  - read_li7000
+  - read_li850
+- title: "Wrangle"
+  desc: Convenient functions for ensuring your data is correct
+  contents:
+  - normalise_prepost
+
+navbar:
+  components:
+    tutorial:
+      text: Tutorial
+      menu:
+      - text: Read respirometry data
+        href: articles/read-licor.html
+    # articles:
+    #   text: Articles
+    #   menu:
+    #   - text: Mission & Scope
+    #     href: articles/mission.html
+    #   - text: Roadmaps
+    #   - text: How to contribute
+  structure:
+    left:  [intro, tutorial, reference, news] # articles
+    right: [search, github, lightswitch]
 
