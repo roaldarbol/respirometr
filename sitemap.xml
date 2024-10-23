@@ -1,27 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/404.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/reference/normalise_prepost.html</loc>
-  </url>
-  <url>
-    <loc>http://www.roald-arboel.com/respirometr/reference/read_licor.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://www.roald-arboel.com/respirometr/404.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/LICENSE-text.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/LICENSE.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/articles/index.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/articles/read-licor.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/articles/respirometr.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/authors.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/index.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/news/index.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/index.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/normalise_prepost.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/read_li7000.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/read_li850.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/read_licor.html</loc></url>
+<url><loc>http://www.roald-arboel.com/respirometr/reference/respirometr-package.html</loc></url>
 </urlset>
+
