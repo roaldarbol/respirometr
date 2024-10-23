@@ -19,5 +19,5 @@ normalise_prepost(data, data_pre, data_post, method = "means_linear")
 Normalised data
 }
 \description{
-Normalise Breathing Traces
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

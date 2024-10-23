@@ -10,5 +10,5 @@ read_li7000(filepath)
 \item{filepath}{Path to file}
 }
 \description{
-Read from LI-7000
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
