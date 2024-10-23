@@ -1,19 +1,45 @@
 Package: respirometr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: An R toolbox for analysing respirometry data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: 
+    person(
+      "Mikkel", 
+      "Roald-Arbøl", 
+      role = c("aut", "cre"), 
+      email = "respirometr.c2ymk@passmail.net",
+      comment = c(ORCID = "0000-0002-9998-0058")
+      )
+Description: An R toolbox for analysing respirometry data.
 License: MIT + file LICENSE
+URL: http://www.roald-arboel.com/respirometr/, https://github.com/roaldarbol/respirometr/
+BugReports: https://github.com/roaldarbol/respirometr/issues
 Encoding: UTF-8
 LazyData: true
-URL: http://www.roald-arboel.com/respirometr/
-RoxygenNote: 7.3.1
 Imports: 
     dplyr,
     janitor,
+    lifecycle,
     purrr,
     readr,
     stats
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    here,
+    readxl,
+    stringr,
+    tinyplot,
+    tinytable,
+    ggplot2,
+    patchwork,
+    performance,
+    see,
+    markdown,
+    tidyr,
+    cffr
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr

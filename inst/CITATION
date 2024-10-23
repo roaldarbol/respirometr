@@ -1,0 +1,12 @@
+
+bibentry(bibtype = "Misc",
+         key = "roaldarbol:2024",
+         title = "respirometr: An R toolbox for analysing respirometry data",
+         author = person(given = "Mikkel",
+                         family = "Roald-Arbøl",
+                         email = "respirometr.c2ymk@passmail.net",
+                         comment = c(ORCID = "0000-0002-9998-0058")),
+         year = "2024",
+         url = "http://www.roald-arboel.com/respirometr/",
+         abstract = "An R toolbox for analysing respirometry data.",
+         version = "0.1.0")
