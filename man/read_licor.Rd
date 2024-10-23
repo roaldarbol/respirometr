@@ -4,7 +4,7 @@
 \alias{read_licor}
 \title{Read Licor data}
 \usage{
-read_licor(filepath, model = "LI7000")
+read_licor(filepath, model = "7000")
 }
 \arguments{
 \item{filepath}{Path to file}
@@ -15,5 +15,7 @@ read_licor(filepath, model = "LI7000")
 Tidy LiCor data
 }
 \description{
-Read Licor data
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+Read respirometry data from a variety of Licor devices.
 }
