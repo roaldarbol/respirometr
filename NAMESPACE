@@ -2,8 +2,9 @@
 
 export(normalise_prepost)
 export(read_licor)
-importFrom(dplyr,mutate_all)
+import(dplyr)
 importFrom(janitor,make_clean_names)
+importFrom(lifecycle,deprecated)
 importFrom(purrr,map)
 importFrom(readr,read_tsv)
 importFrom(stats,na.omit)

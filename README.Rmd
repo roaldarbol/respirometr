@@ -44,7 +44,7 @@ library("respirometr")
 
 ## Documentation
 
-See our docs to go through the steps, one-by-one:
+See our docs to go through the workflow, one-by-one:
 
 - [Introduction to `respirometr`](https://www.roald-arboel.com/respirometr/articles/respirometr.html)
 - [Read respirometry data](https://www.roald-arboel.com/respirometr/articles/read-licor.html)

@@ -26,6 +26,7 @@ You can install the development version of *respirometr* with:
 | Type | Source | Command |
 |----|----|----|
 | Development | R-universe | `install.packages("respirometr", repos = "https://roaldarbol.r-universe.dev")` |
+| Development | Github | `renv::install("roaldarbol/respirometr")` |
 
 Once you have installed the package, you can load it with:
 
@@ -35,10 +36,10 @@ library("respirometr")
 
 ## Documentation
 
-See our docs to go through the steps, one-by-one:
+See our docs to go through the workflow, one-by-one:
 
 - [Introduction to
-  \`respirometr\`\`](https://www.roald-arboel.com/respirometr/articles/respirometr.html)
+  `respirometr`](https://www.roald-arboel.com/respirometr/articles/respirometr.html)
 - [Read respirometry
   data](https://www.roald-arboel.com/respirometr/articles/read-licor.html)
 - [Combine with movement data]()
@@ -77,21 +78,19 @@ To cite *respirometr* in publications use:
 
 ``` r
 citation("respirometr")
-#> Warning in citation("respirometr"): could not determine year for 'respirometr'
-#> from package DESCRIPTION file
 #> To cite package 'respirometr' in publications use:
 #> 
-#>   Roald-Arbøl M (????). _respirometr: An R toolbox for analysing
-#>   respirometry data_. R package version 0.1.0,
-#>   https://github.com/roaldarbol/respirometr/,
-#>   <http://www.roald-arboel.com/respirometr/>.
+#>   Roald-Arbøl M (2024). "respirometr: An R toolbox for analysing
+#>   respirometry data." <http://www.roald-arboel.com/respirometr/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
-#>   @Manual{,
+#>   @Misc{roaldarbol:2024,
 #>     title = {respirometr: An R toolbox for analysing respirometry data},
 #>     author = {Mikkel Roald-Arbøl},
-#>     note = {R package version 0.1.0, https://github.com/roaldarbol/respirometr/},
+#>     year = {2024},
 #>     url = {http://www.roald-arboel.com/respirometr/},
+#>     abstract = {An R toolbox for analysing respirometry data.},
+#>     version = {0.1.0},
 #>   }
 ```
