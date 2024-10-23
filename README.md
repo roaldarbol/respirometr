@@ -4,49 +4,94 @@
 # respirometr
 
 <!-- badges: start -->
+
+[![DOI](https://zenodo.org/badge/773406370.svg)](https://zenodo.org/doi/10.5281/zenodo.13235277)
+[![R-CMD-check](https://github.com/roaldarbol/respirometr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/roaldarbol/respirometr/actions/workflows/R-CMD-check.yaml)
+[![respirometr status
+badge](https://roaldarbol.r-universe.dev/badges/respirometr)](https://roaldarbol.r-universe.dev)
+[![Codecov test
+coverage](https://codecov.io/gh/roaldarbol/respirometr/graph/badge.svg)](https://app.codecov.io/gh/roaldarbol/respirometr)
 <!-- badges: end -->
 
-The goal of respirometr is to …
+*An R toolbox for analysing respirometry data*
+
+The primary aim of the *respirometr* package is to provide a
+standardised workflow for analysing respirometry data in a
+*tidyverse*-friendly syntax.
 
 ## Installation
 
-You can install the development version of respirometr from
-[GitHub](https://github.com/) with:
+You can install the development version of *respirometr* with:
+
+| Type | Source | Command |
+|----|----|----|
+| Development | R-universe | `install.packages("respirometr", repos = "https://roaldarbol.r-universe.dev")` |
+
+Once you have installed the package, you can load it with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("roaldarbol/respirometr")
+library("respirometr")
 ```
 
-## Example
+## Documentation
 
-This is a basic example which shows you how to solve a common problem:
+See our docs to go through the steps, one-by-one:
+
+- [Introduction to
+  \`respirometr\`\`](https://www.roald-arboel.com/respirometr/articles/respirometr.html)
+- [Read respirometry
+  data](https://www.roald-arboel.com/respirometr/articles/read-licor.html)
+- [Combine with movement data]()
+
+## Status
+
+> **Warning**
+>
+> 🏗️ The package is currently in early development and the interface is
+> subject to change. Feel free to play around and provide feedback.
+
+## Contribute
+
+**If your favourite type of respirometry data or model of respirometer
+is not currently supported, we’d love to get a sample of your data to
+support it!**
+
+If you enjoy the package, please make sure to [cite it](#citation). If
+you find a bug, feel free to open an issue.
+
+<!-- ## Acknowledgements -->
+
+<!-- *animovement* is all about the data, and we are deeply grateful for all those who have shared data with us to implement and test our code. Thank you! -->
+
+<!-- - [Stan Edwards](): Trackball with optical flow, free. -->
+
+<!-- - [Estelle Moubarak](): Trackball with optical flow, fixed. -->
+
+<!-- - [Maria Cozan](): Treadmill with rotary encoder. -->
+
+<!-- - [Violette Chiara](): AnimalTA -->
+
+## Citation
+
+To cite *respirometr* in publications use:
 
 ``` r
-library(respirometr)
-## basic example code
+citation("respirometr")
+#> Warning in citation("respirometr"): could not determine year for 'respirometr'
+#> from package DESCRIPTION file
+#> To cite package 'respirometr' in publications use:
+#> 
+#>   Roald-Arbøl M (????). _respirometr: An R toolbox for analysing
+#>   respirometry data_. R package version 0.1.0,
+#>   https://github.com/roaldarbol/respirometr/,
+#>   <http://www.roald-arboel.com/respirometr/>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {respirometr: An R toolbox for analysing respirometry data},
+#>     author = {Mikkel Roald-Arbøl},
+#>     note = {R package version 0.1.0, https://github.com/roaldarbol/respirometr/},
+#>     url = {http://www.roald-arboel.com/respirometr/},
+#>   }
 ```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
