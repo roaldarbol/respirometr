@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The primary goal of the *animovement* package is to offer a streamlined and standardised workflow for analysing animal movement data, with a syntax designed to integrate seamlessly into the *tidyverse* ecosystem.
+The primary aim of the *respirometr* package is to provide a standardised workflow for analysing respirometry data in a *tidyverse*-friendly syntax. 
 
 Animal movement, whether produced by humans or other animals, is crucial for navigating and interacting with the environment. Understanding these movements is of great interest to scientists in diverse fields such as ethology, behavioral ecology, biomechanics, and neuroscience. While there are numerous tools available for quantifying movement, the data they produce — whether from video tracking software or hardware like treadmills, trackballs, or accelerometers — often lack a standardised approach for analysis. This makes it difficult to easily process and compare movement data across different studies and platforms.
 
