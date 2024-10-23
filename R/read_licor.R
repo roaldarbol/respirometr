@@ -32,6 +32,8 @@ read_licor <- function(filepath, model = "7000") {
 }
 
 #' Read from LI-7000
+#' @description
+#' `r lifecycle::badge('experimental')`
 #' @inheritParams read_licor
 read_li7000 <- function(filepath){
   filepath |>
@@ -39,6 +41,8 @@ read_li7000 <- function(filepath){
 }
 
 #' Read from LI-7000
+#' @description
+#' `r lifecycle::badge('experimental')`
 #' @inheritParams read_licor
 read_li850 <- function(filepath){
   filepath |>

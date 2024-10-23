@@ -1,5 +1,8 @@
 #' Normalise Breathing Traces
 #'
+#' @description
+#' `r lifecycle::badge('experimental')`
+#'
 #' @param data Data from trial
 #' @param data_pre Data, pre-trial
 #' @param data_post Data, post-trial
