@@ -33,7 +33,7 @@ You can install the development version of *respirometr* with:
 
 Type | Source | Command
 ---|---|-----------------------
-Development | R-universe | `install.packages("respirometr", repos = "https://roaldarbol.r-universe.dev")`
+Development | R-universe | `install.packages('respirometr', repos = c('https://roaldarbol.r-universe.dev', 'https://cloud.r-project.org'))`
 Development | Github | `renv::install("roaldarbol/respirometr")`
 
 Once you have installed the package, you can load it with:

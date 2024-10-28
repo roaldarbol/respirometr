@@ -4,7 +4,7 @@
 \alias{read_licor}
 \title{Read Licor data}
 \usage{
-read_licor(filepath, model = "7000")
+read_licor(filepath, model)
 }
 \arguments{
 \item{filepath}{Path to file}

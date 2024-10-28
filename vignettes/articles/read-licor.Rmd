@@ -38,7 +38,7 @@ here::i_am("vignettes/articles/read-licor.Rmd")
 Our data lives in a funky place (because of the constraints of being in an R package), but giving file paths is easy.
 
 ```{r}
-filepath_1 <- here("tests", "data", "li850.txt")
+filepath_1 <- here("tests", "data", "LI850.txt")
 
 # These might be something like: here("data", "trackball", "sensor_1", "trackballdata_100.csv") for you!
 ```
@@ -56,9 +56,10 @@ Great, now we have our file paths. But the function needs to know a few more thi
 
 Let's try to read our provided files:
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 df <- read_licor(
-  filepath_1
+  filepath_1,
+  model = "850"
 )
 ```
 

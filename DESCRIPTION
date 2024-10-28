@@ -17,12 +17,12 @@ BugReports: https://github.com/roaldarbol/respirometr/issues
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    cli,
     dplyr,
+    hms,
     janitor,
     lifecycle,
-    purrr,
-    readr,
-    stats
+    readr
 Suggests: 
     knitr,
     rmarkdown,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_licor.R
 \name{read_li850}
 \alias{read_li850}
-\title{Read from LI-7000}
+\title{Read from LI-850}
 \usage{
 read_li850(filepath)
 }
@@ -12,3 +12,4 @@ read_li850(filepath)
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
+\keyword{internal}
