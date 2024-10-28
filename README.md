@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/773406370.svg)](https://zenodo.org/doi/10.5281/zenodo.13235277)
+[![DOI](https://zenodo.org/badge/783434501.svg)](https://doi.org/10.5281/zenodo.14001429)
 [![R-CMD-check](https://github.com/roaldarbol/respirometr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/roaldarbol/respirometr/actions/workflows/R-CMD-check.yaml)
 [![respirometr status
 badge](https://roaldarbol.r-universe.dev/badges/respirometr)](https://roaldarbol.r-universe.dev)
