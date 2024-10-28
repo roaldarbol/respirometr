@@ -37,7 +37,7 @@ here::i_am("vignettes/articles/read-licor.Rmd")
 
 Our data lives in a funky place (because of the constraints of being in an R package), but giving file paths is easy.
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 filepath_1 <- here("tests", "data", "LI850.txt")
 
 # These might be something like: here("data", "trackball", "sensor_1", "trackballdata_100.csv") for you!
