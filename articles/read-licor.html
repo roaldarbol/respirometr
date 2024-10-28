@@ -68,7 +68,7 @@
       <h1>Read respirometry data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/roaldarbol/respirometr/blob/v0.1.0-alpha/vignettes/articles/read-licor.Rmd" class="external-link"><code>vignettes/articles/read-licor.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/roaldarbol/respirometr/blob/main/vignettes/articles/read-licor.Rmd" class="external-link"><code>vignettes/articles/read-licor.Rmd</code></a></small>
       <div class="d-none name"><code>read-licor.Rmd</code></div>
     </div>
 
@@ -108,7 +108,7 @@ manage your files (see their documentation to learn more about it).</p>
 <p>Our data lives in a funky place (because of the constraints of being
 in an R package), but giving file paths is easy.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">filepath_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"data"</span>, <span class="st">"li850.txt"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">filepath_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://here.r-lib.org//reference/here.html" class="external-link">here</a></span><span class="op">(</span><span class="st">"tests"</span>, <span class="st">"data"</span>, <span class="st">"LI850.txt"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># These might be something like: here("data", "trackball", "sensor_1", "trackballdata_100.csv") for you!</span></span></code></pre></div>
 <p>Great, now we have our file paths. But the function needs to know a
@@ -148,18 +148,9 @@ computer mice.</li>
 <p>Let’s try to read our provided files:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_licor.html">read_licor</a></span><span class="op">(</span></span>
-<span>  <span class="va">filepath_1</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">1713</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">11</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> "\t"</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span>  (8): x4_71616, x1_19802, x2_06536e1, x5_15667e1, x9_92875e1, x1_4041066...</span></span>
-<span><span class="co">#&gt; <span style="color: #BBBB00;">lgl</span>  (1): x</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">date</span> (1): x2024_10_07</span></span>
-<span><span class="co">#&gt; <span style="color: #0000BB;">time</span> (1): x10_44_50</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
+<span>  <span class="va">filepath_1</span>,</span>
+<span>  model <span class="op">=</span> <span class="st">"850"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="working-with-multiple-experiments">Working with multiple experiments<a class="anchor" aria-label="anchor" href="#working-with-multiple-experiments"></a>
