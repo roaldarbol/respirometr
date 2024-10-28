@@ -1,26 +1,32 @@
-#' Normalise Breathing Traces
+#' Normalise Traces
 #'
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
 #' @param data Data from trial
-#' @param data_pre Data, pre-trial
-#' @param data_post Data, post-trial
+#' @param pre Pre-trial level. Case be either a single value (if known) or a vector of values, from which the mean is calculated.
+#' @param post Post-trial level. Case be either a single value (if known) or a vector of values, from which the mean is calculated.
 #' @param method Which method is used to normalise the data
 #'
 #' @return Normalised data
 #' @export
 #'
-normalise_prepost <- function(data, data_pre, data_post, method = "means_linear"){
-  cols <- c("co2d_um_m", "h2od_dp_c", "h2od_mm_m")
-  if (method == "means_linear"){
-    for (i in cols){
-      pre_mean <- mean(data_pre[[i]])
-      post_mean <- mean(data_post[[i]])
-      subtracted_vals <- seq(from = pre_mean, to = post_mean, length.out = nrow(data))
-      data[[i]] <- data[[i]] - subtracted_vals
-    }
+normalise_prepost <- function(data, pre, post, method = "means_linear"){
+  # Make pre-mean value
+  if (length(pre > 1)){
+    pre <- mean(pre, na.rm = TRUE)
   }
-  return(data)
+
+  # Make post-mean value
+  if (length(post > 1)){
+    post <- mean(post, na.rm = TRUE)
+  }
+
+  corrected_vals <- c()
+  if (method == "means_linear"){
+      subtracted_vals <- seq(from = pre, to = post, length.out = length(data))
+      corrected_vals <- data - subtracted_vals
+  }
+  return(corrected_vals)
 }
 

@@ -2,16 +2,16 @@
 % Please edit documentation in R/normalise.R
 \name{normalise_prepost}
 \alias{normalise_prepost}
-\title{Normalise Breathing Traces}
+\title{Normalise Traces}
 \usage{
-normalise_prepost(data, data_pre, data_post, method = "means_linear")
+normalise_prepost(data, pre, post, method = "means_linear")
 }
 \arguments{
 \item{data}{Data from trial}
 
-\item{data_pre}{Data, pre-trial}
+\item{pre}{Pre-trial level. Case be either a single value (if known) or a vector of values, from which the mean is calculated.}
 
-\item{data_post}{Data, post-trial}
+\item{post}{Post-trial level. Case be either a single value (if known) or a vector of values, from which the mean is calculated.}
 
 \item{method}{Which method is used to normalise the data}
 }
