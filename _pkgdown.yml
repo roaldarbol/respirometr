@@ -16,8 +16,6 @@ reference:
   desc: These functions are the links between R and your data.
   contents:
   - read_licor
-  - read_li7000
-  - read_li850
 - title: "Wrangle"
   desc: Convenient functions for ensuring your data is correct
   contents:
