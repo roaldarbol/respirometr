@@ -1,7 +1,5 @@
 # Test arguments
-library(here)
-here::i_am("tests/testthat/test-read_licor.R")
-path_correct <- here("tests", "data", "li850.txt")
+path_correct <- testthat::test_path("data", "li850.txt")
 
 # File headers
 # test_that("File headers", {
