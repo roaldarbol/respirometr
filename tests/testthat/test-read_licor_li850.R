@@ -1,3 +1,6 @@
+#' Tests for read_licor_li850 function
+#'
+#' @importFrom testthat test_that expect_equal expect_error describe test_path
 suppressPackageStartupMessages({
   library(testthat)
   library(readr)
@@ -7,7 +10,7 @@ suppressPackageStartupMessages({
 })
 
 # Get path to test data file
-li850_file <- testthat::test_path("data", "li850.txt")
+li850_file <- test_path("data", "li850.txt")
 
 describe("read_licor_li850", {
 
