@@ -10,7 +10,7 @@ suppressPackageStartupMessages({
 })
 
 # Get path to test data file
-li850_file <- here("tests", "data", "LI850.txt")
+li850_file <- here("tests", "data", "li850.txt")
 
 describe("read_licor_li850", {
 
