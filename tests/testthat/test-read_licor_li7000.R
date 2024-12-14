@@ -1,6 +1,3 @@
-#' Tests for read_licor_li7000 function
-#'
-#' @importFrom testthat test_that expect_equal expect_error describe
 suppressPackageStartupMessages({
   library(testthat)
   library(readr)

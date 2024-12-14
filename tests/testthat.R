@@ -8,5 +8,6 @@
 
 library(testthat)
 library(respirometr)
-
+library(here)
+here::i_am("tests/testthat.R")
 test_check("respirometr")
