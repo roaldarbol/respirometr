@@ -13,6 +13,8 @@
 #'
 #' @return A modified version of the input `data` with baseline-adjusted measurements
 #'
+#' @aliases normalize_drift_lm
+#'
 #' @details
 #' The function performs the following steps:
 #' 1. Combines pre and post data
@@ -23,7 +25,7 @@
 #' @examples
 #' \dontrun{
 #' # Assuming you have pre, post, and main datasets
-#' normalized_data <- normalise_lm(
+#' normalized_data <- normalise_drift_lm(
 #'   data = main_data,
 #'   data_pre = pre_experiment_data,
 #'   data_post = post_experiment_data
@@ -33,9 +35,9 @@
 #' @importFrom dplyr bind_rows mutate
 #' @importFrom stats lm predict
 #' @importFrom cli cli_abort cli_warn cli_inform
-#' @importFrom rlang sym
+#' @importFrom rlang sym `:=`
 #' @export
-normalise_lm <- function(data, data_pre, data_post,
+normalise_drift_lm <- function(data, data_pre, data_post,
                          colname_time = "time",
                          colname_measure = "co2d_um_m") {
   # Validate required packages

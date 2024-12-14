@@ -8,8 +8,8 @@ message: 'To cite package "respirometr" in publications use:'
 type: software
 license: MIT
 title: 'respirometr: An R toolbox for analysing respirometry data'
-date-released: 2024-10-23
-version: 0.1.0
+date-released: 2024-12-14
+version: 0.2.0
 identifiers:
 - type: url
   value: https://github.com/roaldarbol/respirometr/

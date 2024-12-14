@@ -1,7 +1,7 @@
 # function warns about small datasets
 
     Code
-      normalise_lm(data = test_data$data, data_pre = small_pre, data_post = small_post)
+      normalise_drift_lm(data = test_data$data, data_pre = small_pre, data_post = small_post)
     Condition
       Warning:
       Very few observations in `data_pre` may lead to unstable baseline estimation

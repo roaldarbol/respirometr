@@ -25,12 +25,12 @@ create_test_data <- function() {
 }
 
 # Test suite
-describe("normalise_lm function", {
+describe("normalise_drift_lm function", {
 
   test_that("function returns a data frame", {
     test_data <- create_test_data()
 
-    result <- normalise_lm(
+    result <- normalise_drift_lm(
       data = test_data$data,
       data_pre = test_data$data_pre,
       data_post = test_data$data_post
@@ -43,7 +43,7 @@ describe("normalise_lm function", {
   test_that("normalization reduces baseline drift", {
     test_data <- create_test_data()
 
-    result <- normalise_lm(
+    result <- normalise_drift_lm(
       data = test_data$data,
       data_pre = test_data$data_pre,
       data_post = test_data$data_post
@@ -67,7 +67,7 @@ describe("normalise_lm function", {
     test_data$data_post <- test_data$data_post %>%
       rename(measurement = co2d_um_m, timestamp = time)
 
-    result <- normalise_lm(
+    result <- normalise_drift_lm(
       data = test_data$data,
       data_pre = test_data$data_pre,
       data_post = test_data$data_post,
@@ -84,7 +84,7 @@ describe("normalise_lm function", {
 
     # Test non-data frame input
     expect_error(
-      normalise_lm(
+      normalise_drift_lm(
         data = c(1,2,3),
         data_pre = test_data$data_pre,
         data_post = test_data$data_post
@@ -95,7 +95,7 @@ describe("normalise_lm function", {
     # Test missing required columns
     invalid_data_pre <- test_data$data_pre %>% select(-time)
     expect_error(
-      normalise_lm(
+      normalise_drift_lm(
         data = test_data$data,
         data_pre = invalid_data_pre,
         data_post = test_data$data_post
@@ -113,7 +113,7 @@ describe("normalise_lm function", {
 
     # Capture all warnings
     expect_snapshot(
-      normalise_lm(
+      normalise_drift_lm(
         data = test_data$data,
         data_pre = small_pre,
         data_post = small_post

@@ -16,18 +16,21 @@ reference:
   desc: These functions are the links between R and your data.
   contents:
   - read_licor
+  - read_licor_li7000
+  - read_licor_li850
 - title: "Wrangle"
   desc: Convenient functions for ensuring your data is correct
   contents:
-  - normalise_prepost
+  - normalise_drift_lm
+  - normalise_drift_means
 
 navbar:
-  components:
-    tutorial:
-      text: Tutorial
-      menu:
-      - text: Read respirometry data
-        href: articles/read-licor.html
+  # components:
+  #   tutorial:
+  #     text: Tutorial
+  #     menu:
+  #     - text: Read respirometry data
+  #       href: articles/read-licor.html
     # articles:
     #   text: Articles
     #   menu:

@@ -9,4 +9,4 @@ bibentry(bibtype = "Misc",
          year = "2024",
          url = "http://www.roald-arboel.com/respirometr/",
          abstract = "An R toolbox for analysing respirometry data.",
-         version = "0.1.0")
+         version = "0.2.0")
