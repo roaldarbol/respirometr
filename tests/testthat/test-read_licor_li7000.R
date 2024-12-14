@@ -5,10 +5,11 @@ suppressPackageStartupMessages({
   library(testthat)
   library(readr)
   library(dplyr)
+  library(here)
 })
 
 # Get path to test data file
-li7000_file <- test_path("..", "data", "LI7000.txt")
+li7000_file <- here("tests", "data", "LI7000.txt")
 
 describe("read_licor_li7000", {
 
