@@ -2,9 +2,8 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  articles/read-licor: read-licor.html
   respirometr: respirometr.html
-last_built: 2024-10-28T11:44Z
+last_built: 2024-12-14T15:50Z
 urls:
   reference: http://www.roald-arboel.com/respirometr/reference
   article: http://www.roald-arboel.com/respirometr/articles

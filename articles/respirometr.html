@@ -8,8 +8,8 @@
 <title>Introduction to respirometr • respirometr</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to respirometr">
 </head>
 <body>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">respirometr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,12 +30,6 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="../articles/respirometr.html">Get started</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-tutorial" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Tutorial</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-tutorial">
-<li><a class="dropdown-item" href="../articles/read-licor.html">Read respirometry data</a></li>
-  </ul>
-</li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
@@ -74,131 +68,81 @@
 
     
     
-<p>The primary aim of the <em>respirometr</em> package is to provide a
-standardised workflow for analysing respirometry data in a
-<em>tidyverse</em>-friendly syntax.</p>
-<p>Animal movement, whether produced by humans or other animals, is
-crucial for navigating and interacting with the environment.
-Understanding these movements is of great interest to scientists in
-diverse fields such as ethology, behavioral ecology, biomechanics, and
-neuroscience. While there are numerous tools available for quantifying
-movement, the data they produce — whether from video tracking software
-or hardware like treadmills, trackballs, or accelerometers — often lack
-a standardised approach for analysis. This makes it difficult to easily
-process and compare movement data across different studies and
-platforms.</p>
-<p>The <em>animovement</em> package addresses this gap by establishing a
-standardised workflow for processing movement data, leveraging common
-data formats (in collaboration with movement) and offering a “recipe”
-for streamlined data analysis.</p>
-<p>At its core, <em>animovement</em> processes the trajectories of
-individual keypoints through time. The spatial position of an individual
-is represented by one (centroid) or more keypoints (pose), provided in
-1D (x), 2D (x, y), or 3D (x, y, z) coordinates. These sequentially
-collected positions form tracks over time.</p>
-<p>In neuroscience and ethology, tracks are commonly generated from:</p>
-<ol style="list-style-type: decimal">
-<li>Pose estimation tools like DeepLabCut or SLEAP, which track multiple
-keypoints for each individual.</li>
-<li>Centroid tracking software like TRex or idtracker.ai, which focuses
-on a single point (the centroid) per individual.</li>
-<li>Treadmills or trackballs, which record the movement of a belt or
-ball, serving as proxies for 1D (treadmill) and 2D (trackball) centroid
-tracking. Our vision is to provide an intuitive and accessible workflow
-using the familiar tidyverse syntax. animovement is designed to handle
-data from various sources, supporting 1D, 2D, and 3D tracking for single
-or multiple individuals.</li>
-</ol>
-<p>In practice, our goal is to make it possible to derive meaningful
-insights from movement data in fewer than 10 lines of code. For
-example:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">animovement</span><span class="op">)</span></span>
-<span><span class="va">movement_summary</span> <span class="op">&lt;-</span> <span class="fu">read_deeplabcut</span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">clean_tracks</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">calculate_kinematics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">clean_kinematics</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">calculate_statistics</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="data-structure">Data structure<a class="anchor" aria-label="anchor" href="#data-structure"></a>
+<h2 id="get-started-with-respirometr">Get Started with respirometr<a class="anchor" aria-label="anchor" href="#get-started-with-respirometr"></a>
 </h2>
-<p>A movement data frame contains information about the <em>spatial
-position</em> of <em>at least one keypoint</em> along <em>at least one
-axis</em> at a point in <em>time</em>.</p>
-<p>In practice, a movement data frame contains the following:</p>
-<table class="table">
-<colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
-</colgroup>
-<thead><tr class="header">
-<th>Variable</th>
-<th>Conditional</th>
-<th>Use-case</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>time</code></td>
-<td>Required</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>keypoint</code></td>
-<td>Required</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>x</code></td>
-<td>Required</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>y</code></td>
-<td>Optional</td>
-<td>All except treadmills</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>z</code></td>
-<td>Optional</td>
-<td>3D tracking</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><code>confidence</code></td>
-<td>Optional</td>
-<td></td>
-<td>In pose estimation, a <em>confidence</em> score is often given which
-can be leveraged to filter outlier observations.</td>
-</tr>
-</tbody>
-</table>
-<!-- # Data sources --><!-- We can divide the data sources into two different categories: --><!-- 1. Direct measurements, derives the position directly (from video) --><!-- 2. Indirect measurements, derives the position through a proxy measurement  --><!-- | Source | Type | Description | | | --><!-- | ---- | ---- | ---- | --><!-- | Treadmill | --><!-- | Trackball | Optical flow | `dx`,`dy` | Optical flow sensors | --><!-- | Trackball | Video tracking | `x`,`y` | Camera | --><!-- | Accelerometer | Accelerometer | `d2x`,`d2y` | Accelerometer | --><!-- | DeepLabCut | Pose estimation | 2D/3D | Single/multi | Camera | --><!-- | SLEAP | Pose estimation | 2D | Single/multi | Camera | --><!-- | Lightning Pose | Pose estimation | 2D | Single/multi | Camera | --><!-- | anipose | Pose estimation | 3D | Single | min. 2 cameras | --><!-- | TRex | Centroid tracking | 2D | Single/multi | Camera | --><!-- | idtracker.ai | centroid tracking | 2D | single/multi | camera | --><!-- | AnimalTA | centroid tracking | 2D | single/multi | camera | -->
+<div class="section level3">
+<h3 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h3>
+<p>The respirometr package provides tools for processing and analyzing
+respirometry data from LI-COR gas analyzers. It currently supports data
+from LI-850 and LI-7000 analyzers, making it easier to work with these
+common instruments in R.</p>
 </div>
-<div class="section level2">
-<h2 id="getting-started-with-animovement">Getting started with <em>animovement</em><a class="anchor" aria-label="anchor" href="#getting-started-with-animovement"></a>
-</h2>
-<p>To get started, first install the package.</p>
-<p>Next, we have put together a tutorial that takes you through all the
-necessary steps, from reading your data to summarising the movements. We
-recommend going through the steps in the specified order which is the
-recommended workflow.</p>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
+<p>You can install respirometr from GitHub:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"roaldarbol/respirometr"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h3>
+<p>First, load the package:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.roald-arboel.com/respirometr/">respirometr</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="reading-data-files">Reading Data Files<a class="anchor" aria-label="anchor" href="#reading-data-files"></a>
+</h4>
+<p>The package provides specialized functions for reading data from
+different LI-COR analyzers:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Read data from a LI-850 analyzer</span></span>
+<span><span class="va">li850_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_licor_li850.html">read_licor_li850</a></span><span class="op">(</span><span class="st">"path/to/LI850.txt"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read data from a LI-7000 analyzer</span></span>
+<span><span class="va">li7000_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_licor_li7000.html">read_licor_li7000</a></span><span class="op">(</span><span class="st">"path/to/LI7000.txt"</span><span class="op">)</span></span></code></pre></div>
+<p>These functions automatically: - Handle the specific file formats of
+each analyzer - Clean column names for easier use in R - Remove columns
+with NA values - Convert time to a standardized format</p>
+</div>
+<div class="section level4">
+<h4 id="normalizing-data">Normalizing Data<a class="anchor" aria-label="anchor" href="#normalizing-data"></a>
+</h4>
+<p>The package provides two methods for normalizing drift in
+measurements:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Using linear interpolation between means</span></span>
+<span><span class="va">normalized_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalise_drift_means.html">normalise_drift_means</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">measurements</span>,</span>
+<span>  pre <span class="op">=</span> <span class="va">pre_measurement_values</span>,</span>
+<span>  post <span class="op">=</span> <span class="va">post_measurement_values</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Using linear regression</span></span>
+<span><span class="va">normalized_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalise_drift_lm.html">normalise_drift_lm</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">data</span>,</span>
+<span>  data_pre <span class="op">=</span> <span class="va">pre_measurements</span>,</span>
+<span>  data_post <span class="op">=</span> <span class="va">post_measurements</span>,</span>
+<span>  colname_time <span class="op">=</span> <span class="st">"time"</span>,</span>
+<span>  colname_measure <span class="op">=</span> <span class="st">"co2d_um_m"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="next-steps">Next Steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+</h3>
 <ul>
-<li><a href="https://www.roald-arboel.com/respirometr/articles/read-licor.html" class="external-link">Read
-respirometry data</a></li>
-<li><a href="https://www.roald-arboel.com/animovement/articles/clean-tracks.html" class="external-link">Clean
-tracks</a></li>
-<li><a href="https://www.roald-arboel.com/animovement/articles/calculate-kinematics.html" class="external-link">Compute
-kinematics</a></li>
-<li><a href="https://www.roald-arboel.com/animovement/articles/calculate-summary-statistics.html" class="external-link">Compute
-movement statistics</a></li>
+<li>Check out the <a href="link_to_reference">reference
+documentation</a> for detailed information about each function</li>
+<li>See the <a href="link_to_articles">articles section</a> for in-depth
+tutorials and examples</li>
+<li>Visit the <a href="link_to_github">GitHub repository</a> for the
+latest updates and to report issues</li>
 </ul>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
