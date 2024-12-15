@@ -2,6 +2,7 @@
 
 export(normalise_drift_lm)
 export(normalise_drift_means)
+export(plot_timeseries)
 export(read_licor)
 export(read_licor_li7000)
 export(read_licor_li850)
