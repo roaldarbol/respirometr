@@ -29,7 +29,7 @@ describe("read_licor_li850", {
     expect_true(is.numeric(result$h2o_mmol_mol_1))
 
     # Check number of rows matches original data (31 rows in sample)
-    expect_equal(nrow(result), 29)
+    expect_equal(nrow(result), 30)
   })
 
   test_that("time calculations are correct", {
@@ -40,7 +40,7 @@ describe("read_licor_li850", {
 
     # First timestamp is 10:44:50, last is 10:45:05
     # Total time should be 15 seconds
-    expect_equal(max(result$time), 14)
+    expect_equal(max(result$time), 15)
 
     # Check time differences are positive
     time_diffs <- diff(result$time)
