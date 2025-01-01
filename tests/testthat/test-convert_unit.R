@@ -41,7 +41,7 @@ test_that("temperature correction works", {
 })
 
 test_that("unit conversions are correct", {
-  # Test umol to uL conversion (factor of 22.4)
+  # Test μmol to μL conversion with temperature
   umol_result <- convert_unit_co2(
     co2_value = 100,
     sampling_rate = 2,
@@ -53,12 +53,24 @@ test_that("unit conversions are correct", {
     co2_value = 100,
     sampling_rate = 2,
     flow_rate = 1300,
+    from_temperature = 20,
     unit_output_vol = "uL"
   )
 
-  expect_equal(ul_result, umol_result * 22.4)
+  expect_equal(ul_result, umol_result * (22.4 * (273.15 + 20) / 273.15))
 
-  # Test time unit conversions
+  # Test μL conversion requires temperature
+  expect_error(
+    convert_unit_co2(
+      co2_value = 100,
+      sampling_rate = 2,
+      flow_rate = 1300,
+      unit_output_vol = "uL"
+    ),
+    "from_temperature must be provided"
+  )
+
+  # Time unit conversions remain unchanged
   min_result <- convert_unit_co2(
     co2_value = 100,
     sampling_rate = 2,
@@ -97,8 +109,9 @@ test_that("invalid inputs throw appropriate errors", {
   expect_error(
     convert_unit_co2(
       co2_value = 100,
+      sampling_rate = 30,
       flow_rate = 1300,
-      from_temperature = 20
+      to_temperature = 20
     ),
     "Both from_temperature and to_temperature must be provided"
   )

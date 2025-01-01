@@ -19,8 +19,10 @@
 #'        30 Hz sampling). Ignored if time is provided. This is used for regular
 #'        sampling intervals.
 #' @param flow_rate Numeric. The flow rate of gas through the system.
-#' @param from_temperature Numeric. Optional source temperature in Celsius. Must be
-#'        provided together with to_temperature if temperature correction is desired.
+#' @param from_temperature Numeric. Source temperature in Celsius. Required when
+#'        converting to μL to adjust molar volume using ideal gas law. Must be
+#'        provided together with to_temperature if metabolic temperature correction
+#'        is desired.
 #' @param to_temperature Numeric. Optional target temperature in Celsius. Must be
 #'        provided together with from_temperature if temperature correction is desired.
 #' @param unit_input_co2 Character. Input CO2 unit, either "uM/M" or "umol/mol"
@@ -40,10 +42,13 @@
 #' 2. Calculates time intervals from either sampling rate or timestamps
 #' 3. Applies flow rate conversion if needed
 #' 4. Optionally applies temperature correction using Q10 = 2
-#' 5. Converts to desired output units
+#' 5. Converts to desired output units (for μL, uses ideal gas law to adjust molar volume based on temperature)
 #'
 #' Temperature correction uses the formula:
 #' correction_factor = 10^((to_temperature - from_temperature) * (log10(2)/10))
+#'
+#' For μL conversions, molar volume is adjusted using ideal gas law:
+#' molar_volume = 22.4 L/mol * (T2/273.15K)
 #'
 #' @examples
 #' # Basic usage with 2 Hz sampling
@@ -51,6 +56,7 @@
 #'   co2_value = 100,
 #'   sampling_rate = 2,
 #'   flow_rate = 1300,
+#'   from_temperature = 20,
 #'   unit_output_time = "hr",
 #'   unit_output_vol = "uL"
 #' )
@@ -60,6 +66,7 @@
 #'   co2_value = c(100, 102, 98),
 #'   time = c(0, 1.5, 3.2),
 #'   flow_rate = 1300,
+#'   from_temperature = 20,
 #'   unit_output_time = "hr",
 #'   unit_output_vol = "uL"
 #' )
@@ -82,7 +89,7 @@
 #'   co2_value = co2_values,
 #'   time = times,
 #'   flow_rate = 200,
-#'   unit_output_vol = "uL",
+#'   unit_output_vol = "umol",
 #'   unit_output_time = "min"
 #' )
 #'
@@ -129,7 +136,7 @@ convert_unit_co2 <- function(co2_value,
   }
 
   # Temperature validation
-  if (!is.null(from_temperature) != !is.null(to_temperature)) {
+  if (is.null(from_temperature) & !is.null(to_temperature)) {
     cli::cli_abort("Both from_temperature and to_temperature must be provided for temperature correction")
   }
 
@@ -166,7 +173,12 @@ convert_unit_co2 <- function(co2_value,
 
   # Convert between volume units if needed
   if (unit_output_vol == "uL") {
-    result <- result * 22.4  # Convert to μL using gas constant
+    if (is.null(from_temperature)) {
+      cli::cli_abort("from_temperature must be provided when converting to uL")
+    }
+    # Adjust molar volume for temperature (K)
+    molar_volume <- 22.4 * (273.15 + from_temperature) / 273.15
+    result <- result * molar_volume
   }
 
   # Convert to desired time unit
