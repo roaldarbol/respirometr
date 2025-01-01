@@ -123,7 +123,7 @@ convert_unit_co2(
   co2_value = co2_values,
   time = times,
   flow_rate = 200,
-  unit_output_vol = "uL",
+  unit_output_vol = "umol",
   unit_output_time = "min"
 )
 
