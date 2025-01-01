@@ -56,6 +56,7 @@
 #'   co2_value = 100,
 #'   sampling_rate = 2,
 #'   flow_rate = 1300,
+#'   from_temperature = 20,
 #'   unit_output_time = "hr",
 #'   unit_output_vol = "uL"
 #' )
@@ -65,6 +66,7 @@
 #'   co2_value = c(100, 102, 98),
 #'   time = c(0, 1.5, 3.2),
 #'   flow_rate = 1300,
+#'   from_temperature = 20,
 #'   unit_output_time = "hr",
 #'   unit_output_vol = "uL"
 #' )
@@ -87,7 +89,7 @@
 #'   co2_value = co2_values,
 #'   time = times,
 #'   flow_rate = 200,
-#'   unit_output_vol = "uL",
+#'   unit_output_vol = "umol",
 #'   unit_output_time = "min"
 #' )
 #'

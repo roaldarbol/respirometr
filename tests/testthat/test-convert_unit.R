@@ -143,4 +143,3 @@ test_that("flow rate units are handled correctly", {
 
   expect_equal(hr_result, min_result / 60)
 })
-
