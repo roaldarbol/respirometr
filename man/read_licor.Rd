@@ -15,7 +15,5 @@ read_licor(filepath, model)
 Tidy LiCor data
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 Read respirometry data from a variety of Licor devices.
 }

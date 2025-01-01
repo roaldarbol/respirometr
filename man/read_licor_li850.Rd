@@ -17,18 +17,18 @@ A tibble containing the processed LI-850 data with:
 \item Cleaned column names (lowercase, no spaces)
 \item \code{system_time_h_m_s} converted to HMS format
 \item New \code{time} column with seconds elapsed from start
+\item Data combined across any mid-file header breaks
 }
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 Reads data from a LI-850 CO2/H2O analyzer file, cleans column names,
 removes columns with NA values, and adds an elapsed time column.
+Handles cases where headers are repeated mid-file.
 }
 \details{
 The function performs the following operations:
 \enumerate{
-\item Reads the TSV file, skipping the first row
+\item Reads the entire file and handles any mid-file headers
 \item Cleans column names using janitor::make_clean_names()
 \item Removes any columns containing NA values
 \item Converts system time to HMS format
