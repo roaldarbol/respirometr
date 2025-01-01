@@ -12,8 +12,8 @@ convert_unit_co2(
   from_temperature = NULL,
   to_temperature = NULL,
   unit_input_co2 = "umol/mol",
-  unit_output_time = "hr",
-  unit_output_vol = "uL",
+  unit_output_time = "min",
+  unit_output_vol = "umol",
   unit_flowrate = "mL/min"
 )
 }

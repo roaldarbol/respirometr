@@ -107,8 +107,8 @@ convert_unit_co2 <- function(co2_value,
                              from_temperature = NULL,
                              to_temperature = NULL,
                              unit_input_co2 = "umol/mol",
-                             unit_output_time = "hr",
-                             unit_output_vol = "uL",
+                             unit_output_time = "min",
+                             unit_output_vol = "umol",
                              unit_flowrate = "mL/min") {
 
   # Input validation
@@ -134,7 +134,7 @@ convert_unit_co2 <- function(co2_value,
   }
 
   # Temperature validation
-  if (!is.null(from_temperature) != !is.null(to_temperature)) {
+  if (is.null(from_temperature) & !is.null(to_temperature)) {
     cli::cli_abort("Both from_temperature and to_temperature must be provided for temperature correction")
   }
 
