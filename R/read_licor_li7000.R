@@ -1,7 +1,6 @@
 #' Read and Process LI-7000 Data Files
 #'
 #' @description
-#' `r lifecycle::badge('experimental')`
 #'
 #' Reads data from a LI-7000 CO2/H2O analyzer file, cleans column names,
 #' and ensures proper time column handling. Handles cases where headers

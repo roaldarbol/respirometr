@@ -1,7 +1,6 @@
 #' Read and Process LI-850 Data Files
 #'
 #' @description
-#' `r lifecycle::badge('experimental')`
 #'
 #' Reads data from a LI-850 CO2/H2O analyzer file, cleans column names,
 #' removes columns with NA values, and adds an elapsed time column.

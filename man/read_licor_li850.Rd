@@ -21,8 +21,6 @@ A tibble containing the processed LI-850 data with:
 }
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 Reads data from a LI-850 CO2/H2O analyzer file, cleans column names,
 removes columns with NA values, and adds an elapsed time column.
 Handles cases where headers are repeated mid-file.

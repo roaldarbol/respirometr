@@ -1,7 +1,6 @@
 #' Read Licor data
 #'
 #' @description
-#' `r lifecycle::badge('experimental')`
 #'
 #' Read respirometry data from a variety of Licor devices.
 #'

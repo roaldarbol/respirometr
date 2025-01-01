@@ -19,8 +19,6 @@ A tibble containing the processed LI-7000 data with:
 }
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
-
 Reads data from a LI-7000 CO2/H2O analyzer file, cleans column names,
 and ensures proper time column handling. Handles cases where headers
 are repeated mid-file.

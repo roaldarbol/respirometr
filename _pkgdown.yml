@@ -23,6 +23,11 @@ reference:
   contents:
   - normalise_drift_lm
   - normalise_drift_means
+  - convert_unit_co2
+- title: "Visualise"
+  desc: Convenient functinos for plotting your data
+  contents:
+  - plot_timeseries
 
 navbar:
   # components:
