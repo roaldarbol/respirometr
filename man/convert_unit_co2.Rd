@@ -12,8 +12,8 @@ convert_unit_co2(
   from_temperature = NULL,
   to_temperature = NULL,
   unit_input_co2 = "umol/mol",
-  unit_output_time = "min",
-  unit_output_vol = "umol",
+  unit_output_time = "hr",
+  unit_output_vol = "uL",
   unit_flowrate = "mL/min"
 )
 }
@@ -31,10 +31,8 @@ sampling intervals.}
 
 \item{flow_rate}{Numeric. The flow rate of gas through the system.}
 
-\item{from_temperature}{Numeric. Source temperature in Celsius. Required when
-converting to μL to adjust molar volume using ideal gas law. Must be
-provided together with to_temperature if metabolic temperature correction
-is desired.}
+\item{from_temperature}{Numeric. Source temperature in Celsius. Only required if
+metabolic temperature correction is desired (must be provided with to_temperature).}
 
 \item{to_temperature}{Numeric. Optional target temperature in Celsius. Must be
 provided together with from_temperature if temperature correction is desired.}
@@ -46,7 +44,7 @@ provided together with from_temperature if temperature correction is desired.}
 "sec", "min", or "hr". Default: "min"}
 
 \item{unit_output_vol}{Character. Desired volume unit for the output, either
-"umol" or "uL". Default: "umol"}
+"mL" or "uL". Default: "uL"}
 
 \item{unit_flowrate}{Character. Flow rate unit, either "mL/min" or "mL/hr".
 Default: "mL/min"}
@@ -71,14 +69,11 @@ The function performs the following conversions:
 \item Calculates time intervals from either sampling rate or timestamps
 \item Applies flow rate conversion if needed
 \item Optionally applies temperature correction using Q10 = 2
-\item Converts to desired output units (for μL, uses ideal gas law to adjust molar volume based on temperature)
+\item Converts to desired output units (μL conversion is direct volume conversion)
 }
 
 Temperature correction uses the formula:
 correction_factor = 10^((to_temperature - from_temperature) * (log10(2)/10))
-
-For μL conversions, molar volume is adjusted using ideal gas law:
-molar_volume = 22.4 L/mol * (T2/273.15K)
 }
 \note{
 When using sampling_rate, provide the frequency in Hz (e.g., 30 for 30 Hz
@@ -100,7 +95,6 @@ convert_unit_co2(
   co2_value = c(100, 102, 98),
   time = c(0, 1.5, 3.2),
   flow_rate = 1300,
-  from_temperature = 20,
   unit_output_time = "hr",
   unit_output_vol = "uL"
 )
@@ -123,7 +117,7 @@ convert_unit_co2(
   co2_value = co2_values,
   time = times,
   flow_rate = 200,
-  unit_output_vol = "umol",
+  unit_output_vol = "mL",
   unit_output_time = "min"
 )
 
