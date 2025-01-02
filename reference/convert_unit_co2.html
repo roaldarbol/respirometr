@@ -72,8 +72,8 @@ for every 10°C increase).</p>
 <span>  from_temperature <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  to_temperature <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  unit_input_co2 <span class="op">=</span> <span class="st">"umol/mol"</span>,</span>
-<span>  unit_output_time <span class="op">=</span> <span class="st">"min"</span>,</span>
-<span>  unit_output_vol <span class="op">=</span> <span class="st">"umol"</span>,</span>
+<span>  unit_output_time <span class="op">=</span> <span class="st">"hr"</span>,</span>
+<span>  unit_output_vol <span class="op">=</span> <span class="st">"uL"</span>,</span>
 <span>  unit_flowrate <span class="op">=</span> <span class="st">"mL/min"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -104,10 +104,8 @@ sampling intervals.</p></dd>
 
 
 <dt id="arg-from-temperature">from_temperature<a class="anchor" aria-label="anchor" href="#arg-from-temperature"></a></dt>
-<dd><p>Numeric. Source temperature in Celsius. Required when
-converting to μL to adjust molar volume using ideal gas law. Must be
-provided together with to_temperature if metabolic temperature correction
-is desired.</p></dd>
+<dd><p>Numeric. Source temperature in Celsius. Only required if
+metabolic temperature correction is desired (must be provided with to_temperature).</p></dd>
 
 
 <dt id="arg-to-temperature">to_temperature<a class="anchor" aria-label="anchor" href="#arg-to-temperature"></a></dt>
@@ -127,7 +125,7 @@ provided together with from_temperature if temperature correction is desired.</p
 
 <dt id="arg-unit-output-vol">unit_output_vol<a class="anchor" aria-label="anchor" href="#arg-unit-output-vol"></a></dt>
 <dd><p>Character. Desired volume unit for the output, either
-"umol" or "uL". Default: "umol"</p></dd>
+"mL" or "uL". Default: "uL"</p></dd>
 
 
 <dt id="arg-unit-flowrate">unit_flowrate<a class="anchor" aria-label="anchor" href="#arg-unit-flowrate"></a></dt>
@@ -145,11 +143,9 @@ Default: "mL/min"</p></dd>
 <li><p>Calculates time intervals from either sampling rate or timestamps</p></li>
 <li><p>Applies flow rate conversion if needed</p></li>
 <li><p>Optionally applies temperature correction using Q10 = 2</p></li>
-<li><p>Converts to desired output units (for μL, uses ideal gas law to adjust molar volume based on temperature)</p></li>
+<li><p>Converts to desired output units (μL conversion is direct volume conversion)</p></li>
 </ol><p>Temperature correction uses the formula:
 correction_factor = 10^((to_temperature - from_temperature) * (log10(2)/10))</p>
-<p>For μL conversions, molar volume is adjusted using ideal gas law:
-molar_volume = 22.4 L/mol * (T2/273.15K)</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -173,18 +169,17 @@ metabolic rate doubles for every 10°C increase in temperature.</p>
 <span class="r-in"><span>  unit_output_time <span class="op">=</span> <span class="st">"hr"</span>,</span></span>
 <span class="r-in"><span>  unit_output_vol <span class="op">=</span> <span class="st">"uL"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22501.56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 936000</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using timestamps for irregular sampling</span></span></span>
 <span class="r-in"><span><span class="fu">convert_unit_co2</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  co2_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">102</span>, <span class="fl">98</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1.5</span>, <span class="fl">3.2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  flow_rate <span class="op">=</span> <span class="fl">1300</span>,</span></span>
-<span class="r-in"><span>  from_temperature <span class="op">=</span> <span class="fl">20</span>,</span></span>
 <span class="r-in"><span>  unit_output_time <span class="op">=</span> <span class="st">"hr"</span>,</span></span>
 <span class="r-in"><span>  unit_output_vol <span class="op">=</span> <span class="st">"uL"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]      Inf 7650.529 6485.743</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]      Inf 318240.0 269788.2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># With temperature correction</span></span></span>
 <span class="r-in"><span><span class="fu">convert_unit_co2</span><span class="op">(</span></span></span>
@@ -196,7 +191,7 @@ metabolic rate doubles for every 10°C increase in temperature.</p>
 <span class="r-in"><span>  unit_output_vol <span class="op">=</span> <span class="st">"uL"</span>,</span></span>
 <span class="r-in"><span>  unit_output_time <span class="op">=</span> <span class="st">"min"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1491.406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 62679.64</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Processing a sequence of measurements</span></span></span>
 <span class="r-in"><span><span class="va">co2_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">95</span>, <span class="fl">98</span>, <span class="fl">100</span>, <span class="fl">103</span>, <span class="fl">99</span><span class="op">)</span></span></span>
@@ -205,7 +200,7 @@ metabolic rate doubles for every 10°C increase in temperature.</p>
 <span class="r-in"><span>  co2_value <span class="op">=</span> <span class="va">co2_values</span>,</span></span>
 <span class="r-in"><span>  time <span class="op">=</span> <span class="va">times</span>,</span></span>
 <span class="r-in"><span>  flow_rate <span class="op">=</span> <span class="fl">200</span>,</span></span>
-<span class="r-in"><span>  unit_output_vol <span class="op">=</span> <span class="st">"umol"</span>,</span></span>
+<span class="r-in"><span>  unit_output_vol <span class="op">=</span> <span class="st">"mL"</span>,</span></span>
 <span class="r-in"><span>  unit_output_time <span class="op">=</span> <span class="st">"min"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]   Inf 0.588 0.600 0.618 0.594</span>
