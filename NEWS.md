@@ -1,4 +1,5 @@
 # respirometr 0.2.1
+Adds a `convert_unit_co2()` function to convert from `ppm` to a standard metabolic rate such as `mL/h`.
 
 # respirometr 0.2.0
 
