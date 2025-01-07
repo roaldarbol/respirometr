@@ -6,57 +6,45 @@
 \usage{
 convert_unit_co2(
   co2_value,
-  time = NULL,
-  sampling_rate = NULL,
   flow_rate,
-  from_temperature = NULL,
-  to_temperature = NULL,
+  unit_flowrate = "mL/min",
   unit_input_co2 = "umol/mol",
-  unit_output_time = "hr",
-  unit_output_vol = "uL",
-  unit_flowrate = "mL/min"
+  unit_output_time = "h",
+  unit_output_vol = "mL",
+  from_temperature = NULL,
+  to_temperature = NULL
 )
 }
 \arguments{
 \item{co2_value}{Numeric vector. The differential CO2 value(s) from gas analyzer
 (default in μmol/mol or ppm)}
 
-\item{time}{Numeric vector. Optional vector of timestamps in seconds. If provided,
-must be the same length as co2_value. Use this for irregular sampling
-intervals or when there are gaps in the data.}
+\item{flow_rate}{Numeric. The flow rate of gas though the system.}
 
-\item{sampling_rate}{Numeric. The sampling frequency in Hz (e.g., use 30 for
-30 Hz sampling). Ignored if time is provided. This is used for regular
-sampling intervals.}
+\item{unit_flowrate}{Character. Flow rate unit, either "mL/min" or "mL/h".
+Default: "mL/min"}
 
-\item{flow_rate}{Numeric. The flow rate of gas through the system.}
+\item{unit_input_co2}{Character. Input CO2 unit, either "uM/M" or "umol/mol"
+(both equivalent to ppm). Default: "umol/mol"}
+
+\item{unit_output_time}{Character. Desired time unit for the output rate, one of
+"s", "min", or "h". Default: "min"}
+
+\item{unit_output_vol}{Character. Desired volume unit for the output, either
+"mL" or "uL". Default: "mL"}
 
 \item{from_temperature}{Numeric. Source temperature in Celsius. Only required if
 metabolic temperature correction is desired (must be provided with to_temperature).}
 
 \item{to_temperature}{Numeric. Optional target temperature in Celsius. Must be
 provided together with from_temperature if temperature correction is desired.}
-
-\item{unit_input_co2}{Character. Input CO2 unit, either "uM/M" or "umol/mol"
-(both equivalent to ppm). Default: "umol/mol"}
-
-\item{unit_output_time}{Character. Desired time unit for the output rate, one of
-"sec", "min", or "hr". Default: "min"}
-
-\item{unit_output_vol}{Character. Desired volume unit for the output, either
-"mL" or "uL". Default: "uL"}
-
-\item{unit_flowrate}{Character. Flow rate unit, either "mL/min" or "mL/hr".
-Default: "mL/min"}
 }
 \value{
 Numeric vector of converted CO2 values in the specified output units
 }
 \description{
 Converts CO2 measurements from gas analyzer data into standardized units,
-with options for temperature correction. The function handles both regular sampling
-intervals (specified by sampling frequency) and irregular intervals (specified by
-time vector). It can process both single measurements and vectors of measurements.
+with options for temperature correction. It can process both single measurements and vectors of measurements.
 
 The function implements standard gas analysis conversions and can optionally
 apply temperature corrections using a Q10 = 2 approach (metabolic rate doubles
@@ -66,8 +54,6 @@ for every 10°C increase).
 The function performs the following conversions:
 \enumerate{
 \item Converts CO2 measurements from ppm (μmol/mol) to fractions
-\item Calculates time intervals from either sampling rate or timestamps
-\item Applies flow rate conversion if needed
 \item Optionally applies temperature correction using Q10 = 2
 \item Converts to desired output units (μL conversion is direct volume conversion)
 }
@@ -75,34 +61,19 @@ The function performs the following conversions:
 Temperature correction uses the formula:
 correction_factor = 10^((to_temperature - from_temperature) * (log10(2)/10))
 }
-\note{
-When using sampling_rate, provide the frequency in Hz (e.g., 30 for 30 Hz
-sampling), not the period (e.g., not 1/30).
-}
 \examples{
-# Basic usage with 2 Hz sampling
+# Basic usage
 convert_unit_co2(
   co2_value = 100,
-  sampling_rate = 2,
   flow_rate = 1300,
-  from_temperature = 20,
-  unit_output_time = "hr",
+  unit_output_time = "h",
   unit_output_vol = "uL"
 )
 
-# Using timestamps for irregular sampling
-convert_unit_co2(
-  co2_value = c(100, 102, 98),
-  time = c(0, 1.5, 3.2),
-  flow_rate = 1300,
-  unit_output_time = "hr",
-  unit_output_vol = "uL"
-)
 
 # With temperature correction
 convert_unit_co2(
   co2_value = 100,
-  sampling_rate = 30,    # 30 Hz sampling
   flow_rate = 200,
   from_temperature = 17, # Experiment temperature
   to_temperature = 25,   # Standard temperature
@@ -112,10 +83,8 @@ convert_unit_co2(
 
 # Processing a sequence of measurements
 co2_values <- c(95, 98, 100, 103, 99)
-times <- seq(0, 8, by = 2)  # Measurements every 2 seconds
 convert_unit_co2(
   co2_value = co2_values,
-  time = times,
   flow_rate = 200,
   unit_output_vol = "mL",
   unit_output_time = "min"
