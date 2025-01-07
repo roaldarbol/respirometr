@@ -3,7 +3,6 @@ library(testthat)
 test_that("basic conversion works", {
   result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300
   )
   expect_type(result, "double")
@@ -11,26 +10,15 @@ test_that("basic conversion works", {
   expect_gt(result, 0)
 })
 
-test_that("vector input works with time", {
-  result <- convert_unit_co2(
-    co2_value = c(100, 102, 98),
-    time = c(0, 1.5, 3.2),
-    flow_rate = 1300
-  )
-  expect_length(result, 3)
-  expect_true(all(!is.na(result)))
-})
 
 test_that("temperature correction works", {
   base_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 30,
     flow_rate = 200
   )
 
   corrected_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 30,
     flow_rate = 200,
     from_temperature = 15,
     to_temperature = 25
@@ -44,14 +32,12 @@ test_that("unit conversions are correct", {
   # Test mL to μL conversion (direct volume conversion)
   ml_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300,
     unit_output_vol = "mL"
   )
 
   ul_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300,
     unit_output_vol = "uL"
   )
@@ -63,30 +49,27 @@ test_that("unit conversions are correct", {
   # Time unit conversions remain unchanged
   min_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300,
     unit_output_time = "min"
   )
 
-  hr_result <- convert_unit_co2(
+  h_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300,
-    unit_output_time = "hr"
+    unit_output_time = "h"
   )
 
   sec_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 1300,
-    unit_output_time = "sec"
+    unit_output_time = "s"
   )
 
-  expect_equal(hr_result, min_result * 60)
+  expect_equal(h_result, min_result * 60)
   expect_equal(sec_result, min_result / 60)
 })
 
-test_that("invalid inputs throw appropriate errors", {
+test_that("invalid inputs thow appropriate errors", {
   expect_error(
     convert_unit_co2(
       co2_value = 100,
@@ -99,37 +82,25 @@ test_that("invalid inputs throw appropriate errors", {
   expect_error(
     convert_unit_co2(
       co2_value = 100,
-      sampling_rate = 30,
       flow_rate = 1300,
       to_temperature = 20
     ),
     "Both from_temperature and to_temperature must be provided"
-  )
-
-  expect_error(
-    convert_unit_co2(
-      co2_value = c(100, 102),
-      time = c(0),
-      flow_rate = 1300
-    ),
-    "Length of time must match length of co2_value"
   )
 })
 
 test_that("flow rate units are handled correctly", {
   min_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 60,
     unit_flowrate = "mL/min"
   )
 
-  hr_result <- convert_unit_co2(
+  h_result <- convert_unit_co2(
     co2_value = 100,
-    sampling_rate = 2,
     flow_rate = 60,
-    unit_flowrate = "mL/hr"
+    unit_flowrate = "mL/h"
   )
 
-  expect_equal(hr_result, min_result / 60)
+  expect_equal(h_result, min_result / 60)
 })
